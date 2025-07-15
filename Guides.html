@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content" name="viewport"/>
+<title>Remote Order Guide</title>
+<!-- Optimized font loading to reduce layout shifts -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* Light Theme Colors */
+  --primary-color-light: #316EDE;
+  --secondary-color-light: #F5F7FA;
+  --text-color-light: #333;
+  --card-bg-light: #fff;
+  --card-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --appbar-bg-light: var(--primary-color-light);
+  --appbar-text-light: #fff;
+  --menu-item-hover-bg-light: #e8f0fe;
+  --toc-item-bg-light: #E9EAED;
+  --toc-item-text-light: #333;
+  --toc-item-hover-bg-light: #e1ecff;
+  --input-border-light: #ebebeb;
+  --input-focus-border-light: var(--primary-color-light);
+  --input-focus-shadow-light: rgba(49, 110, 222, 0.3);
+  --image-block-bg-light: #ebebeb;
+  --image-block-border-light: #d0d0d0;
+  --image-block-caption-bg-light: #e9edf1;
+  --image-block-caption-text-light: #333;
+  --no-results-bg-light: #E9EAED;
+  --no-results-text-light: #333;
+  --no-results-border-light: #d0d0d0;
+  --attention-bg-light: #ffebee;
+  --attention-text-light: #c62828;
+  --attention-border-light: #f44336;
+  --attention-icon-light: #c62828;
+  --search-highlight-bg-light: rgba(49, 110, 222, 0.3);
+  --skeleton-shimmer-light: #e0e0e0;
+  --search-nav-disabled-light: rgba(255, 255, 255, 0.5);
+  --icon-skeleton-bg-light: rgba(0, 0, 0, 0.08);
+  --icon-skeleton-shimmer-light: rgba(0, 0, 0, 0.14);
+  --icon-arrow-color-light: #616161; /* Material Design Grey 700 */
+  --icon-close-color-light: #49454F; /* Material Design On Surface Variant */
+
+  /* Dark Theme Colors */
+  --primary-color-dark: #82b1ff;
+  --secondary-color-dark: #121212;
+  --text-color-dark: #f5f5f5;
+  --card-bg-dark: #1e1e1e;
+  --card-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --appbar-bg-dark: var(--card-bg-dark);
+  --appbar-text-dark: var(--text-color-dark);
+  --menu-item-hover-bg-dark: #2a2a2a;
+  --toc-item-bg-dark: var(--card-bg-dark);
+  --toc-item-text-dark: var(--text-color-dark);
+  --toc-item-hover-bg-dark: #2a2a2a;
+  --input-border-dark: #444;
+  --input-focus-border-dark: var(--primary-color-dark);
+  --input-focus-shadow-dark: rgba(130, 177, 255, 0.5);
+  --image-block-bg-dark: #2a2a2a;
+  --image-block-border-dark: #444;
+  --image-block-caption-bg-dark: #1f1f1f;
+  --image-block-caption-text-dark: #ccc;
+  --no-results-bg-dark: #2a2a2a;
+  --no-results-text-dark: #eee;
+  --no-results-border-dark: #444;
+  --attention-bg-dark: #2a1a1a;
+  --attention-text-dark: #ff8a80;
+  --attention-border-dark: #ef5350;
+  --attention-icon-dark: #ff8a80;
+  --search-highlight-bg-dark: rgba(130, 177, 255, 0.4);
+  --skeleton-shimmer-dark: #333;
+  --search-nav-disabled-dark: rgba(18, 18, 18, 0.4);
+  --icon-skeleton-bg-dark: rgba(255, 255, 255, 0.08);
+  --icon-skeleton-shimmer-dark: rgba(255, 255, 255, 0.14);
+  --icon-arrow-color-dark: #9E9E9E;  /* Material Design Grey 500 */
+  --icon-close-color-dark: #C9C5CA; /* Material Design On Surface Variant (Dark) */
+
+  /* Default variables */
+  --primary-color: var(--primary-color-light);
+  --secondary-color: var(--secondary-color-light);
+  --text-color: var(--text-color-light);
+  --card-bg: var(--card-bg-light);
+  --card-shadow: var(--card-shadow-light);
+  --appbar-bg: var(--appbar-bg-light);
+  --appbar-text: var(--appbar-text-light);
+  --menu-item-hover-bg: var(--menu-item-hover-bg-light);
+  --toc-item-bg: var(--toc-item-bg-light);
+  --toc-item-text: var(--toc-item-text-light);
+  --toc-item-hover-bg: var(--toc-item-hover-bg-light);
+  --input-border: var(--input-border-light);
+  --input-focus-border: var(--input-focus-border-light);
+  --input-focus-shadow: var(--input-focus-shadow-light);
+  --image-block-bg: var(--image-block-bg-light);
+  --image-block-border: var(--image-block-border-light);
+  --image-block-caption-bg: var(--image-block-caption-bg-light);
+  --image-block-caption-text: var(--image-block-caption-text-light);
+  --no-results-bg: var(--no-results-bg-light);
+  --no-results-text: var(--no-results-text-light);
+  --no-results-border: var(--no-results-border-light);
+  --attention-bg: var(--attention-bg-light);
+  --attention-text: var(--attention-text-light);
+  --attention-border: var(--attention-border-light);
+  --attention-icon: var(--attention-icon-light);
+  --search-highlight-bg: var(--search-highlight-bg-light);
+  --skeleton-shimmer: var(--skeleton-shimmer-light);
+  --search-nav-disabled: var(--search-nav-disabled-light);
+  --icon-skeleton-bg: var(--icon-skeleton-bg-light);
+  --icon-skeleton-shimmer: var(--icon-skeleton-shimmer-light);
+  --icon-arrow-color: var(--icon-arrow-color-light);
+  --icon-close-color: var(--icon-close-color-light);
+
+
+  /* Spacing System */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem;  /* 8px */
+  --spacing-md: 1rem;    /* 16px */
+  --spacing-lg: 1.5rem;  /* 24px */
+  --spacing-xl: 2rem;    /* 32px */
+  --paragraph-margin-bottom: 1.25rem; /* 20px */
+  --card-radius: 16px;
+  --keyboard-offset: 0px; /* Fallback for virtual keyboard */
+
+  /* Media Block Spacing */
+  --media-block-vertical-margin: var(--spacing-lg);
+  --media-block-padding: var(--spacing-lg);
+  --media-block-padding-mobile: var(--spacing-md);
+  --media-content-to-internal-caption-margin: var(--spacing-sm);
+  --media-block-to-external-caption-margin-top: var(--spacing-sm);
+  --media-external-caption-margin-bottom: var(--spacing-lg);
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  margin: 0;
+  padding: 0 0 calc(64px + var(--spacing-md));
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s, padding-bottom 0.3s ease;
+  overscroll-behavior-y: none; /* Disables the vertical rubber band scroll effect */
+}
+body.no-scroll {
+  overflow: hidden;
+}
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 24px;
+  vertical-align: middle;
+  color: var(--primary-color);
+}
+
+.skeleton {
+  animation: skeleton-loading 1.5s infinite linear;
+  background-color: var(--image-block-bg);
+  background-image: linear-gradient(
+    100deg,
+    transparent 20%,
+    var(--skeleton-shimmer) 40%,
+    var(--skeleton-shimmer) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.skeleton > *:not(.caption) {
+    visibility: hidden;
+}
+
+.material-symbols-rounded.icon-loading {
+  color: transparent !important;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  animation: skeleton-loading 1.5s infinite linear;
+  background-color: var(--icon-skeleton-bg);
+  background-image: linear-gradient(
+    100deg,
+    transparent 20%,
+    var(--icon-skeleton-shimmer) 40%,
+    var(--icon-skeleton-shimmer) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+}
+
+.floating-bottom-nav {
+  position: fixed;
+  bottom: var(--spacing-md);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 400px;
+  height: 64px;
+  background-color: var(--primary-color);
+  border-radius: 32px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-sm);
+  z-index: 1001;
+  transition: transform 0.3s ease, background-color 0.3s, max-width 0.4s ease, padding 0.4s ease, bottom 0.2s ease-out, left 0.3s ease, border-radius 0.3s ease;
+  overflow: hidden;
+  will-change: transform; /* Animation optimization */
+}
+.floating-bottom-nav.nav-hidden {
+    transform: translateX(-50%) translateY(150%);
+}
+.floating-bottom-nav .nav-btn {
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.floating-bottom-nav .nav-btn .material-symbols-rounded {
+  font-size: 28px;
+  color: #fff;
+}
+.floating-bottom-nav .nav-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #fff;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  text-align: center;
+  transition: opacity 0.2s ease;
+  padding: 0 var(--spacing-xs);
+}
+
+.search-controls {
+    display: none;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+.search-controls .nav-btn {
+    color: #fff;
+}
+.search-controls .nav-btn .material-symbols-rounded {
+    font-size: 24px;
+    transition: color 0.2s;
+}
+
+.search-counter {
+    font-size: 0.875rem;
+    color: #fff;
+    font-weight: 500;
+    width: 40px;
+    text-align: center;
+    opacity: 1;
+    transition: width 0.2s ease-out, opacity 0.2s ease-out;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.search-counter.hidden {
+    opacity: 0;
+    width: 0;
+}
+
+.search-controls .nav-btn.disabled {
+    pointer-events: none;
+}
+.search-controls .nav-btn.disabled .material-symbols-rounded {
+    color: var(--search-nav-disabled);
+}
+
+.search-input-container {
+    display: none;
+    flex-grow: 1;
+    position: relative;
+    align-items: center;
+}
+.floating-bottom-nav input#sectionSearch {
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--input-border);
+    border-radius: 24px;
+    background-color: #fff;
+    padding: 0 var(--spacing-md);
+    font-size: 1rem;
+    color: var(--text-color-light);
+    box-sizing: border-box;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.floating-bottom-nav input#sectionSearch::placeholder {
+    color: #a9a9a9;
+}
+
+.floating-bottom-nav input#sectionSearch:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: inset 0 0 0 2px var(--input-focus-shadow);
+}
+
+.search-highlight {
+    background-color: var(--search-highlight-bg);
+    color: inherit;
+    border-radius: 3px;
+}
+.current-highlight {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.floating-bottom-nav.is-searching {
+  position: fixed;
+  left: 0;
+  bottom: env(keyboard-inset-height, var(--keyboard-offset));
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0;
+  transform: none !important;
+  padding: var(--spacing-sm) var(--spacing-md);
+  box-sizing: border-box;
+  z-index: 1002;
+  justify-content: flex-start;
+  gap: var(--spacing-md);
+}
+
+.floating-bottom-nav.is-searching .nav-title,
+.floating-bottom-nav.is-searching #bottom-menu-btn,
+.floating-bottom-nav.is-searching #bottom-search-btn {
+    display: none;
+}
+
+.floating-bottom-nav.is-searching .search-controls,
+.floating-bottom-nav.is-searching .search-input-container {
+    display: flex;
+}
+.floating-bottom-nav.is-searching #close-search-btn {
+    display: flex;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1049;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.4s;
+}
+.menu-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-height: 90dvh;
+  z-index: 1050;
+  background-color: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-top-left-radius: var(--card-radius);
+  border-top-right-radius: var(--card-radius);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+  box-sizing: border-box;
+  padding-bottom: env(safe-area-inset-bottom);
+  will-change: transform; /* Animation optimization */
+}
+.menu-container.visible {
+  transform: translateY(0);
+}
+
+.drag-handle-container {
+    padding: var(--spacing-md) 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: grab;
+    flex-shrink: 0;
+}
+.drag-handle {
+    width: 40px;
+    height: 5px;
+    background-color: var(--input-border);
+    border-radius: 2.5px;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--spacing-md) var(--spacing-md);
+  border-bottom: 1px solid var(--input-border);
+  flex-shrink: 0;
+}
+.menu-header .title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.menu-header .close-btn {
+  background: #E9EAED; 
+  border: none;
+  cursor: pointer;
+  width: 40px; 
+  height: 40px; 
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-header .close-btn .material-symbols-rounded {
+  font-size: 24px; 
+  color: var(--icon-close-color); 
+}
+
+
+#menu-list {
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-sm) 0;
+  overflow-y: auto;
+  flex-grow: 1;
+  padding-bottom: var(--spacing-lg);
+  overscroll-behavior: contain; /* Prevents scroll propagation beyond the menu */
+}
+#menu-list li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-md);
+  min-height: 56px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+#menu-list li a .label { display: flex; align-items: center; gap: var(--spacing-md); flex-grow: 1; }
+#menu-list li a .icon-left { flex-shrink: 0; }
+#menu-list li a .arrow {
+  font-size: 20px;
+  margin-left: auto;
+  color: var(--icon-arrow-color);
+  align-self: center;
+  flex-shrink: 0;
+  margin-left: var(--spacing-sm);
+  transition: color 0.2s;
+}
+/* Target the left icon specifically */
+#menu-list li a .icon-left.material-symbols-rounded {
+    color: var(--primary-color);
+}
+
+h2 {
+  margin: var(--spacing-md);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+section h2 {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  margin: 0 0 var(--paragraph-margin-bottom) 0;
+}
+
+.toc-list {
+  list-style: none;
+  margin: var(--spacing-md) var(--spacing-md) var(--spacing-md);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+.toc-list li {
+  border-radius: var(--spacing-sm);
+  overflow: hidden;
+  transition: background-color 0.3s;
+  contain: content; /* Render optimization */
+}
+.toc-list li a {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-md);
+  background-color: var(--toc-item-bg);
+  color: var(--toc-item-text);
+  border-radius: var(--spacing-sm);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden;
+}
+
+.toc-list li a .label { display: flex; align-items: center; gap: var(--spacing-md); }
+.toc-list li a .arrow {
+  font-size: 20px;
+  margin-left: auto;
+  color: var(--icon-arrow-color);
+  align-self: center;
+  transition: color 0.2s;
+}
+/* Target the left icon specifically */
+.toc-list li a .icon-left.material-symbols-rounded {
+    color: var(--primary-color);
+}
+.toc-list li:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+section {
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  background-color: var(--card-bg);
+  margin: var(--spacing-md);
+  contain: content; /* Render optimization */
+}
+section p {
+  margin: 0 0 var(--paragraph-margin-bottom) 0;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+section > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+.image-block {
+  margin: var(--media-block-vertical-margin) 0;
+  padding: var(--media-block-padding);
+  background-color: var(--image-block-bg);
+  border-radius: var(--spacing-sm);
+  border: 1px solid var(--image-block-border);
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  contain: content; /* Render optimization */
+}
+.image-block img {
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 0;
+  display: block;
+  margin: 0 auto;
+}
+.image-block .caption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--image-block-caption-text);
+  margin-top: var(--media-content-to-internal-caption-margin);
+}
+.image-block + .caption {
+  display: block;
+  margin: var(--media-block-to-external-caption-margin-top) auto var(--media-external-caption-margin-bottom);
+  font-size: 0.875rem;
+  background-color: var(--image-block-caption-bg);
+  border-radius: var(--card-radius);
+  font-weight: 500;
+  width: fit-content;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: var(--image-block-caption-text);
+}
+
+#noResultsMessage { 
+    margin: 0 var(--spacing-md) var(--spacing-lg);
+}
+#noResultsMessage .no-results-block {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-md) + var(--spacing-lg) + var(--spacing-sm));
+  background-color: var(--no-results-bg);
+  color: var(--no-results-text);
+  border: 1px solid var(--no-results-border);
+  border-radius: var(--spacing-sm);
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  gap: var(--spacing-sm);
+  overflow: hidden;
+}
+#noResultsMessage .no-results-block .icon-left {
+  position: absolute;
+  top: 50%;
+  left: var(--spacing-md);
+  transform: translateY(-50%);
+  font-size: var(--spacing-lg);
+  color: var(--no-results-text);
+  flex-shrink: 0;
+}
+#noResultsMessage .no-results-block .text { line-height: 1.5; flex: 1; }
+
+.attention-block {
+  margin-bottom: var(--paragraph-margin-bottom);
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  padding: var(--spacing-md);
+  padding-left: calc(var(--spacing-md) + var(--spacing-lg) + var(--spacing-sm));
+  background-color: var(--attention-bg);
+  color: var(--attention-text);
+  border: 1px solid var(--attention-border);
+  border-radius: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  font-weight: 500;
+  gap: var(--spacing-sm);
+}
+.attention-block .icon {
+  position: absolute;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  font-size: var(--spacing-lg);
+  color: var(--attention-icon);
+  flex-shrink: 0;
+}
+.attention-block .text { flex: 1; line-height: 1.5; }
+
+.fab {
+  position: fixed;
+  bottom: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 56px;
+  height: 56px;
+  background-color: var(--primary-color);
+  color: var(--appbar-text-light);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  font-size: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s, bottom 0.3s ease, box-shadow 0.3s ease;
+  will-change: opacity, transform, bottom; /* Animation optimization */
+}
+.fab.show { opacity: 1; pointer-events: auto; }
+.fab.hidden-by-modal { opacity: 0 !important; pointer-events: none !important;}
+.fab.fab-pushed-up {
+    bottom: calc(64px + var(--spacing-md) + var(--spacing-md));
+}
+.fab.search-active {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#imageModal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.9);
+  touch-action: none;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-out;
+}
+#modalClose {
+  position:absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  color:#fff;
+  font-size: 28px;
+  font-weight:normal;
+  cursor:pointer;
+  border-radius: 50%;
+  padding: var(--spacing-sm);
+  transition: background-color 0.2s, color 0.2s, opacity 0.2s ease-out;
+  line-height: 1;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  will-change: opacity, background-color; /* Animation optimization */
+}
+
+#modalImage {
+  max-width:90%;
+  max-height:90%;
+  transition: opacity 0.2s ease-out, transform 0.1s ease-out;
+  cursor: grab;
+  z-index: 1;
+  will-change: transform, opacity; /* Animation optimization */
+}
+#modalImage.dragging {
+    cursor: grabbing;
+}
+
+.video-container { position: relative; width: 100%; max-width: 800px; margin: 0 auto; }
+.video-container::before { content: ""; display: block; padding-top: 56.25%; }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 0px; }
+
+@media (max-width: 600px) {
+  .video-container::before { padding-top: 0; }
+  .video-container iframe { position: static; width: 100%; height: 240px; }
+  
+  .image-block { 
+    padding: var(--media-block-padding-mobile); 
+  }
+  .image-block + .caption {
+    font-size: 0.8125rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin: var(--media-block-to-external-caption-margin-top) auto var(--media-external-caption-margin-bottom);
+  }
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Interaction styles for tap */
+.fab:active {
+  background-color: #2a5ecb;
+}
+.floating-bottom-nav .nav-btn:active {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.floating-bottom-nav .nav-btn.disabled:active {
+  background-color: transparent;
+}
+.menu-header .close-btn:active {
+  background-color: #d1d2d6;
+}
+#menu-list li a:active {
+  background-color: var(--menu-item-hover-bg);
+}
+.toc-list li a:active {
+  background-color: var(--toc-item-hover-bg);
+}
+#modalClose:active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* To enable dark theme, uncomment the following block */
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: var(--primary-color-dark);
+    --secondary-color: var(--secondary-color-dark);
+    --text-color: var(--text-color-dark);
+    --card-bg: var(--card-bg-dark);
+    --card-shadow: var(--card-shadow-dark);
+    --appbar-bg: var(--appbar-bg-dark);
+    --appbar-text: var(--appbar-text-dark);
+    --menu-item-hover-bg: var(--menu-item-hover-bg-dark);
+    --toc-item-bg: var(--toc-item-bg-dark);
+    --toc-item-text: var(--toc-item-text-dark);
+    --toc-item-hover-bg: var(--toc-item-hover-bg-dark);
+    --input-border: var(--input-border-dark);
+    --input-focus-border: var(--input-focus-border-dark);
+    --input-focus-shadow: var(--input-focus-shadow-dark);
+    --image-block-bg: var(--image-block-bg-dark);
+    --image-block-border: var(--image-block-border-dark);
+    --image-block-caption-bg: var(--image-block-caption-bg-dark);
+    --image-block-caption-text: var(--image-block-caption-text-dark);
+    --no-results-bg: var(--no-results-bg-dark);
+    --no-results-text: var(--no-results-text-dark);
+    --no-results-border: var(--no-results-border-dark);
+    --attention-bg: var(--attention-bg-dark);
+    --attention-text: var(--attention-text-dark);
+    --attention-border: var(--attention-border-dark);
+    --attention-icon: var(--attention-icon-dark);
+    --search-highlight-bg: var(--search-highlight-bg-dark);
+    --skeleton-shimmer: var(--skeleton-shimmer-dark);
+    --search-nav-disabled: var(--search-nav-disabled-dark);
+    --icon-skeleton-bg: var(--icon-skeleton-bg-dark);
+    --icon-skeleton-shimmer: var(--icon-skeleton-shimmer-dark);
+    --icon-arrow-color: var(--icon-arrow-color-dark);
+    --icon-close-color: var(--icon-close-color-dark);
+  }
+
+  .menu-header .close-btn {
+    background: #333;
+  }
+  .menu-header .close-btn:active {
+    background-color: #444;
+  }
+  .floating-bottom-nav .nav-btn:active {
+    background-color: rgba(0,0,0,0.1);
+  }
+  .floating-bottom-nav .nav-btn.disabled:active {
+    background-color: transparent;
+  }
+}
+*/
+
+/* Hover styles for devices that support it */
+@media (hover: hover) and (pointer: fine) {
+  .fab:hover {
+    background-color: #2a5ecb;
+  }
+  .floating-bottom-nav .nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  .floating-bottom-nav .nav-btn.disabled:hover {
+    background-color: transparent;
+  }
+  .menu-header .close-btn:hover {
+    background-color: #dcdde1;
+  }
+  #menu-list li a:hover {
+    background-color: var(--menu-item-hover-bg);
+  }
+  .toc-list li a:hover {
+    background-color: var(--toc-item-hover-bg);
+  }
+  #modalClose:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .toc-list li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  /* Dark theme hover Styles */
+  /*
+  @media (prefers-color-scheme: dark) {
+    .floating-bottom-nav .nav-btn:hover {
+      background-color: rgba(0,0,0,0.1);
+    }
+    .floating-bottom-nav .nav-btn.disabled:hover {
+      background-color: transparent;
+    }
+    .toc-list li:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    .menu-header .close-btn:hover {
+      background-color: #4f4f4f;
+    }
+  }
+  */
+}
+</style>
+</head>
+<body>
+
+<div class="menu-overlay" id="menu-overlay"></div>
+
+<div class="menu-container" id="menu-container">
+    <div class="drag-handle-container" id="drag-handle-container">
+        <div class="drag-handle"></div>
+    </div>
+    <div class="menu-header">
+        <div class="title">Remote Orders</div>
+        <button class="close-btn" id="menu-close-btn">
+            <span class="material-symbols-rounded icon-loading">close</span>
+        </button>
+    </div>
+    <ul id="menu-list">
+        <li>
+            <a href="#what-is-remote">
+                <span class="label">
+                    <span class="icon-left material-symbols-rounded icon-loading">help</span> What is Remote Order?
+                </span>
+                <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+            </a>
+        </li>
+        <li>
+            <a href="#navigate">
+                <span class="label">
+                    <span class="icon-left material-symbols-rounded icon-loading">fmd_good</span> Navigate to Remote Orders
+                </span>
+                <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+            </a>
+        </li>
+        <li>
+            <a href="#confirm-alert">
+                <span class="label">
+                    <span class="icon-left material-symbols-rounded icon-loading">shopping_cart</span> Create New Order
+                </span>
+                <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+            </a>
+        </li>
+        <li>
+            <a href="#enter-details">
+                <span class="label">
+                    <span class="icon-left material-symbols-rounded icon-loading">receipt_long</span> Enter Order Details
+                </span>
+                <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+            </a>
+        </li>
+        <li>
+            <a href="#loan-calculator">
+                <span class="label">
+                    <span class="icon-left material-symbols-rounded icon-loading">calculate</span> Loan Calculator
+                </span>
+                <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+            </a>
+        </li>
+        <li>
+            <a href="#add-insurance">
+                <span class="label">
+                    <span class="icon-left material-symbols-rounded icon-loading">shield</span> Add Insurance
+                </span>
+                <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+            </a>
+        </li>
+        <li>
+            <a href="#insurance-benefits">
+                <span class="label">
+                    <span class="icon-left material-symbols-rounded icon-loading">military_tech</span> Insurance Benefits
+                </span>
+                <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+            </a>
+        </li>
+        <li>
+            <a href="#new-order">
+                <span class="label">
+                    <span class="icon-left material-symbols-rounded icon-loading">movie</span> YouTube Player
+                </span>
+                <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div id="noResultsMessage" style="display: none;">
+    <a class="no-results-block">
+        <span class="label">
+            <span class="material-symbols-rounded icon-left icon-loading">search_off</span>
+            <span class="text">No results found for your query</span>
+        </span>
+    </a>
+</div>
+
+<ul class="toc-list" id="toc-list">
+    <li>
+        <a href="#what-is-remote">
+            <span class="label">
+                <span class="icon-left material-symbols-rounded icon-loading">help</span>
+                What is Remote Order?
+            </span>
+            <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+        </a>
+    </li>
+    <li>
+        <a href="#navigate">
+            <span class="label">
+                <span class="icon-left material-symbols-rounded icon-loading">fmd_good</span>
+                Navigate to Remote Orders
+            </span>
+            <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+        </a>
+    </li>
+    <li>
+        <a href="#confirm-alert">
+            <span class="label">
+                <span class="icon-left material-symbols-rounded icon-loading">shopping_cart</span>
+                Create New Order
+            </span>
+            <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+        </a>
+    </li>
+    <li>
+        <a href="#enter-details">
+            <span class="label">
+                <span class="icon-left material-symbols-rounded icon-loading">receipt_long</span>
+                Enter Order Details
+            </span>
+            <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+        </a>
+    </li>
+    <li>
+        <a href="#loan-calculator">
+            <span class="label">
+                <span class="icon-left material-symbols-rounded icon-loading">calculate</span>
+                Loan Calculator
+            </span>
+            <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+        </a>
+    </li>
+    <li>
+        <a href="#add-insurance">
+            <span class="label">
+                <span class="icon-left material-symbols-rounded icon-loading">shield</span>
+                Add Insurance
+            </span>
+            <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+        </a>
+    </li>
+    <li>
+        <a href="#insurance-benefits">
+            <span class="label">
+                <span class="icon-left material-symbols-rounded icon-loading">military_tech</span>
+                Insurance Benefits
+            </span>
+            <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+        </a>
+    </li>
+    <li>
+        <a href="#new-order">
+            <span class="label">
+                <span class="icon-left material-symbols-rounded icon-loading">movie</span>
+                YouTube Player
+            </span>
+            <span class="material-symbols-rounded arrow icon-loading">arrow_forward_ios</span>
+        </a>
+    </li>
+</ul>
+
+<section id="what-is-remote">
+    <h2>What is Remote Order?</h2>
+    <p>2 Main Use Cases:</p>
+    <p><strong>Case 1:</strong> You have an online customer who wants to apply for a loan:</p>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_1/%D0%A0%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA1.png"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img alt="Изображение онлайн-клиента" loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_1/%D0%A0%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA1.png"/>
+        <div class="caption">Case 1: Online customer</div>
+    </div>
+    <p><strong>Case 2:</strong> You have a customer in-store and no time to process their application:</p>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_2/%D0%A0%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA2.png"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img alt="Изображение клиента в магазине" loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_2/%D0%A0%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA2.png"/>
+        <div class="caption">Case 2: No time to process application</div>
+    </div>
+</section>
+
+<section id="navigate">
+    <h2>Navigate to Remote Orders</h2>
+    <p>Open the side menu and tap the Remote Order section. Then tap the Create New Order button:</p>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_3/Remote_Order_1.svg"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img alt="Изображение навигации к удаленным заказам" loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_3/Remote_Order_1.svg"/>
+        <div class="caption">Remote Orders section in sidebar menu</div>
+    </div>
+</section>
+
+<section id="confirm-alert">
+    <h2>Create New Order</h2>
+    <p>In the dialog window that appears, tap the Confirm button:</p>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_4/Remote_Order_3.svg"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img alt="Изображение диалогового окна подтверждения" loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_4/Remote_Order_3.svg"/>
+        <div class="caption">Confirmation dialog for creating a Remote order</div>
+    </div>
+</section>
+
+<section id="enter-details">
+    <h2>Enter Order Details</h2>
+    <p>Add description, price, and quantity. Add more items if needed:</p>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_5/1.svg"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_5/1.svg" alt="Изображение экрана корзины заказа"/>
+        <div class="caption">Order Cart Screen</div>
+    </div>
+</section>
+
+<section id="loan-calculator">
+    <h2>Loan Calculator</h2>
+    <p>Selecting the Loan Term is easy. Just click on Term and see available options:</p>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_6/Check-in_1.svg"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_6/Check-in_1.svg" alt="Изображение выбора срока кредита"/>
+        <div class="caption">Loan Calculator Screen — Dialog window for selecting term</div>
+    </div>
+    <p>Select the Down Payment either as an Amount or a percentage:</p>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_7/Check-in_1.svg"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_7/Check-in_1.svg" alt="Изображение выбора первоначального взноса"/>
+        <div class="caption">Loan Calculator Screen — Dialog window for selecting DP</div>
+    </div>
+</section>
+
+<section id="add-insurance">
+    <h2>Add Insurance</h2>
+    <p>Add Loan Protection and Goods Protection by tapping on the corresponding button:</p>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_8/Remote_Order_5.svg"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_8/Remote_Order_5.svg" alt="Изображение добавления страховки"/>
+        <div class="caption">Loan Protection and Goods Protection</div>
+    </div>
+    <p>You can add Goods protection for each item or only for selected items:</p>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_9/Check-in_1.svg"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_9/Check-in_1.svg" alt="Изображение добавления защиты товаров"/>
+        <div class="caption">Adding Goods Protection</div>
+    </div>
+    <div class="attention-block">
+        <span class="material-symbols-rounded icon icon-loading">error</span>
+        <span class="text">Note for Goods and Electronics Insurance – we use the Good Protection button!</span>
+    </div>
+    <p style="margin-bottom: 0.5rem; margin-top: 1.75rem !important;">
+        Whether it is one or the other depends on the type of goods. You can have both policies in a single order. Open the Goods protection screen and select by item.
+    </p>
+</section>
+
+<section id="insurance-benefits">
+    <h2>Insurance Benefits</h2>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_11/Frame_2608994.svg"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_11/Frame_2608994.svg" alt="Изображение преимуществ защиты кредита"/>
+        <div class="caption">Loan Protection</div>
+    </div>
+    <p style="margin-top: 1.5rem;">
+        <strong>Coverage:</strong><br/>
+        • Up to loan amount outstanding<br/>
+        • Death<br/>
+        • Dismemberment<br/>
+        • During Loan Term
+    </p>
+    <p>
+        <strong>Pricing:</strong><br/>
+        • On average about 300-400 php for a 6-month loan up to 10k PHP
+    </p>
+    <p style="margin-bottom: 2rem;">
+        <strong>Excluded:</strong><br/>
+        • Non-accident events such as illness<br/>
+        • Self-inflicted injury or suicide
+    </p>
+    <div class="image-block skeleton" data-src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_10/Frame_2609082.svg"><span class="material-symbols-rounded icon-loading" style="position: absolute; top: 16px; right: 16px; font-size: 24px; color: var(--primary-color); pointer-events: none;">fullscreen</span>
+        <img loading="lazy" src="https://dev.s3-api.getandbuy.kz/guides/guide_images/guide_image_10/Frame_2609082.svg" alt="Изображение преимуществ защиты товаров"/>
+        <div class="caption">Goods Protection</div>
+    </div>
+    <p style="margin-top: 1.5rem;">
+        2 Types: Goods or Electronics
+    </p>
+    <p>
+        <strong>Coverage:</strong><br/>
+        • Repair or Replacement<br/>
+        • Accidental physical impact/damage<br/>
+        • Liquid damage or Fire within residence<br/>
+        • Up to device value (Limit 120k PHP)<br/>
+        • 12 months
+    </p>
+    <p>
+        <strong>Pricing:</strong><br/>
+        • Only 6% if both Loan and Goods selected, or 12% if only one
+    </p>
+    <p style="margin-bottom: 0.5rem;">
+        <strong>Excluded:</strong><br/>
+        • Non-accident events such as breakdown/unauthorized repair<br/>
+        • Loss/loss due to acts of nature or pet
+    </p>
+</section>
+
+<section id="new-order">
+    <h2>YouTube Player</h2>
+    <p>
+        Click on the “New Order” button to begin entering order information. This opens a form where you can specify product, quantity, and customer details.
+    </p>
+    <div class="image-block skeleton">
+        <div class="video-container"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://youtube.com/embed/m_NEn3pbntI?si=wRxZv6OEBJY4ERel" title="YouTube video player" width="100%">
+        </iframe></div>
+        <div class="caption">YouTube video player</div>
+    </div>
+</section>
+
+<div class="floating-bottom-nav" id="floating-nav">
+    <button class="nav-btn" id="bottom-menu-btn" title="Open Menu">
+        <span class="material-symbols-rounded icon-loading">menu</span>
+    </button>
+    <div class="nav-title">Remote Orders</div>
+    <button class="nav-btn" id="bottom-search-btn" title="Search Sections">
+        <span class="material-symbols-rounded icon-loading">search</span>
+    </button>
+
+    <div class="search-controls">
+        <button class="nav-btn disabled" id="search-up-btn" title="Previous match">
+            <span class="material-symbols-rounded icon-loading">arrow_upward</span>
+        </button>
+        <button class="nav-btn disabled" id="search-down-btn" title="Next match">
+            <span class="material-symbols-rounded icon-loading">arrow_downward</span>
+        </button>
+        <span class="search-counter hidden" id="search-counter">0/0</span>
+    </div>
+    <div class="search-input-container">
+        <input id="sectionSearch" placeholder="Search..." type="text"/>
+    </div>
+    <button class="nav-btn" id="close-search-btn" title="Close Search" style="display: none;">
+        <span class="material-symbols-rounded icon-loading">close</span>
+    </button>
+</div>
+
+<div id="imageModal">
+    <span class="material-symbols-rounded icon-loading" id="modalClose">close</span>
+    <img id="modalImage"/>
+</div>
+<button class="fab material-symbols-rounded icon-loading" id="scrollToTopBtn" title="Back to top">arrow_upward</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Object containing references to key DOM elements
+    const elements = {
+        menuOverlay: document.getElementById('menu-overlay'),
+        menuContainer: document.getElementById('menu-container'),
+        bottomMenuBtn: document.getElementById('bottom-menu-btn'),
+        menuCloseBtn: document.getElementById('menu-close-btn'),
+        menuList: document.getElementById('menu-list'),
+        tocList: document.getElementById('toc-list'),
+
+        searchInput: document.getElementById('sectionSearch'),
+        noResultsMessage: document.getElementById('noResultsMessage'),
+        bottomSearchBtn: document.getElementById('bottom-search-btn'),
+        closeSearchBtn: document.getElementById('close-search-btn'),
+        searchUpBtn: document.getElementById('search-up-btn'),
+        searchDownBtn: document.getElementById('search-down-btn'),
+        searchCounter: document.getElementById('search-counter'),
+
+        imageModal: document.getElementById('imageModal'),
+        modalImg: document.getElementById('modalImage'),
+        modalCloseBtn: document.getElementById('modalClose'),
+
+        scrollToTopBtn: document.getElementById("scrollToTopBtn"),
+        floatingNav: document.getElementById("floating-nav"),
+    };
+
+    // State variables for search functionality
+    let highlightedElements = [];
+    let currentHighlightIndex = -1;
+
+    // State variables for controlling scroll behavior
+    let isAnchorScroll = false;
+    let justClosedSearch = false;
+    let scrollTicking = false;
+    let lastScrollTop = 0;
+
+    // Checks if the FAB collides with the bottom navigation and adjusts its position
+    function checkFabCollision() {
+        const { scrollToTopBtn, floatingNav } = elements;
+        if (!scrollToTopBtn || !floatingNav) return;
+
+        if (floatingNav.classList.contains('nav-hidden') || floatingNav.classList.contains('is-searching') || !scrollToTopBtn.classList.contains('show')) {
+            scrollToTopBtn.classList.remove('fab-pushed-up');
+            return;
+        }
+
+        const navRect = floatingNav.getBoundingClientRect();
+        const fabRect = scrollToTopBtn.getBoundingClientRect();
+        const requiredGap = 16; // 1rem
+
+        if (navRect.right + requiredGap > fabRect.left) {
+            scrollToTopBtn.classList.add('fab-pushed-up');
+        } else {
+            scrollToTopBtn.classList.remove('fab-pushed-up');
+        }
+    }
+    
+    // Centralizes all UI updates that happen on scroll
+    const handleScroll = () => {
+        const { scrollToTopBtn, floatingNav } = elements;
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Show/hide the "scroll to top" button
+        if (scrollToTopBtn) {
+            scrollToTopBtn.classList.toggle("show", currentScroll > 200);
+        }
+
+        // Hide/show bottom navigation on scroll
+        if (floatingNav && !floatingNav.classList.contains('is-searching') && !isAnchorScroll && !justClosedSearch) {
+            if (currentScroll > lastScrollTop && currentScroll > 100) {
+                floatingNav.classList.add('nav-hidden'); // Hide on scroll down
+            } else {
+                floatingNav.classList.remove('nav-hidden'); // Show on scroll up
+            }
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+
+        checkFabCollision();
+    };
+
+
+    // Initialize all components
+    setupLazyLoading();
+    setupFontIconLoading();
+    setupMenu(elements);
+    setupNavigation(elements);
+    setupSearch(elements);
+    setupImageModal(elements);
+    setupScrollBehavior(elements);
+
+    // Handles lazy loading of images and iframes to improve performance
+    function setupLazyLoading() {
+        // Lazy load images inside skeleton blocks
+        document.querySelectorAll('.image-block.skeleton img').forEach(img => {
+            const imageBlock = img.closest('.image-block');
+            if (imageBlock) {
+                const onImageLoad = () => imageBlock.classList.remove('skeleton');
+                if (img.complete) {
+                    onImageLoad();
+                } else {
+                    img.addEventListener('load', onImageLoad);
+                    img.addEventListener('error', onImageLoad); // Also remove skeleton on error
+                }
+            }
+        });
+
+        // Lazy load iframes inside skeleton blocks
+        document.querySelectorAll('.image-block.skeleton iframe').forEach(iframe => {
+            const imageBlock = iframe.closest('.image-block');
+            if (imageBlock) {
+                 iframe.addEventListener('load', () => {
+                    imageBlock.classList.remove('skeleton');
+                });
+            }
+        });
+    }
+
+    // Removes loading indicators from icons once fonts are ready
+    function setupFontIconLoading() {
+        document.fonts.ready.then(() => {
+            document.querySelectorAll('.icon-loading').forEach(icon => {
+                icon.classList.remove('icon-loading');
+            });
+        });
+    }
+
+    // Manages the side menu (opening, closing, dragging)
+    function setupMenu(elements) {
+        const { menuContainer, menuOverlay, bottomMenuBtn, menuCloseBtn, scrollToTopBtn } = elements;
+        
+        // Toggles the menu visibility
+        const toggleMenu = (show) => {
+            if (!menuContainer || !menuOverlay) return;
+            const isVisible = menuContainer.classList.contains('visible');
+            if (show === isVisible) return;
+
+            if (show) {
+                menuOverlay.classList.add('visible');
+                menuContainer.classList.add('visible');
+                document.body.classList.add('no-scroll');
+                if (scrollToTopBtn) scrollToTopBtn.classList.add('hidden-by-modal');
+            } else {
+                menuOverlay.classList.remove('visible');
+                menuContainer.classList.remove('visible');
+                if (scrollToTopBtn) scrollToTopBtn.classList.remove('hidden-by-modal');
+                
+                // Delay removing the no-scroll class to prevent background scroll on swipe-close
+                setTimeout(() => {
+                    // Only remove if the menu is still hidden, to avoid race conditions
+                    if (!menuContainer.classList.contains('visible')) {
+                         document.body.classList.remove('no-scroll');
+                    }
+                }, 400); // Match transition duration of menu-container
+            }
+        };
+
+        if (bottomMenuBtn) bottomMenuBtn.addEventListener('click', () => toggleMenu(true));
+        if (menuCloseBtn) menuCloseBtn.addEventListener('click', () => toggleMenu(false));
+        if (menuOverlay) menuOverlay.addEventListener('click', () => toggleMenu(false));
+
+        // Variables for drag-to-close functionality
+        let isDragging = false, startY, currentY;
+        const getClientY = (e) => e.touches ? e.touches[0].clientY : e.clientY;
+
+        // Starts the drag gesture
+        const onDragStart = (e) => {
+            if (elements.menuList.scrollTop === 0 && (e.target.closest('.drag-handle-container') || e.target.closest('.menu-header'))) {
+                isDragging = true;
+                startY = getClientY(e);
+                currentY = startY;
+                menuContainer.style.transition = 'none';
+                document.addEventListener('mousemove', onDragMove);
+                document.addEventListener('mouseup', onDragEnd);
+                document.addEventListener('touchmove', onDragMove, { passive: false });
+                document.addEventListener('touchend', onDragEnd);
+            }
+        };
+
+        // Handles movement during the drag
+        const onDragMove = (e) => {
+            if (!isDragging) return;
+            currentY = getClientY(e);
+            const deltaY = currentY - startY;
+            if (deltaY > 0) { // Only allow dragging down
+                e.preventDefault();
+                menuContainer.style.transform = `translateY(${deltaY}px)`;
+            }
+        };
+
+        // Ends the drag gesture
+        const onDragEnd = () => {
+            if (!isDragging) return;
+            isDragging = false;
+            menuContainer.style.transition = '';
+            // If dragged more than 100px, close the menu
+            if (currentY - startY > 100) {
+                toggleMenu(false);
+            }
+            menuContainer.style.transform = ''; // Reset transform
+            document.removeEventListener('mousemove', onDragMove);
+            document.removeEventListener('mouseup', onDragEnd);
+            document.removeEventListener('touchmove', onDragMove);
+            document.removeEventListener('touchend', onDragEnd);
+        };
+        
+        menuContainer.addEventListener('mousedown', onDragStart);
+        menuContainer.addEventListener('touchstart', onDragStart, { passive: true });
+    }
+
+    // Sets up smooth scrolling for anchor links from menus
+    function setupNavigation(elements) {
+        const { floatingNav, menuContainer, menuCloseBtn, tocList, menuList } = elements;
+        const handleNavClick = (event) => {
+            const link = event.target.closest('a');
+            if (!link) return;
+            
+            event.preventDefault();
+            const targetId = link.getAttribute('href')?.substring(1);
+            const targetEl = document.getElementById(targetId);
+
+            if (targetEl) {
+                // Close the menu if it's open
+                if (menuContainer.classList.contains('visible')) {
+                    menuCloseBtn.click();
+                }
+
+                // Explicitly show the floating nav when an anchor is clicked
+                floatingNav.classList.remove('nav-hidden');
+
+                // Flag to prevent scroll hiding the nav bar
+                isAnchorScroll = true;
+                setTimeout(() => { isAnchorScroll = false; }, 1000);
+                
+                const offset = 0; // Adjust if you have a fixed header
+                const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - offset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        };
+
+        tocList.addEventListener('click', handleNavClick);
+        menuList.addEventListener('click', handleNavClick);
+    }
+
+    // Manages the search functionality
+    function setupSearch(elements) {
+        const { searchInput, searchUpBtn, searchDownBtn, searchCounter, floatingNav, closeSearchBtn, bottomSearchBtn, scrollToTopBtn } = elements;
+        
+        let searchTimeout; 
+
+        // Removes all search highlights from the document
+        const clearHighlights = () => {
+            document.querySelectorAll('mark.search-highlight, mark.current-highlight').forEach(mark => {
+                const parent = mark.parentNode;
+                if (parent) {
+                    parent.replaceChild(document.createTextNode(mark.textContent), mark);
+                    parent.normalize();
+                }
+            });
+            highlightedElements = [];
+            currentHighlightIndex = -1;
+            searchUpBtn.classList.add('disabled');
+            searchDownBtn.classList.add('disabled');
+            searchCounter.textContent = '0/0';
+        };
+
+        // Finds and highlights text in sections based on the query
+        const highlightText = (query) => {
+            clearHighlights();
+            if (!query) return;
+
+            const regex = new RegExp(query, 'gi');
+            document.querySelectorAll('section').forEach(section => {
+                const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT, null, false);
+                let node;
+                while(node = walker.nextNode()) {
+                    if (node.parentElement.tagName === 'MARK') continue; // Skip already highlighted nodes
+                    if (regex.test(node.textContent)) {
+                        const fragment = document.createDocumentFragment();
+                        let lastIndex = 0;
+                        node.textContent.replace(regex, (match, offset) => {
+                            if (offset > lastIndex) {
+                                fragment.appendChild(document.createTextNode(node.textContent.substring(lastIndex, offset)));
+                            }
+                            const mark = document.createElement('mark');
+                            mark.className = 'search-highlight';
+                            mark.textContent = match;
+                            fragment.appendChild(mark);
+                            highlightedElements.push(mark);
+                            lastIndex = offset + match.length;
+                        });
+                        if (lastIndex < node.textContent.length) {
+                            fragment.appendChild(document.createTextNode(node.textContent.substring(lastIndex)));
+                        }
+                        if (node.parentNode) {
+                            node.parentNode.replaceChild(fragment, node);
+                        }
+                    }
+                }
+            });
+            updateSearchUI();
+        };
+
+        // Updates the search controls UI (buttons, counter)
+        const updateSearchUI = () => {
+            const total = highlightedElements.length;
+            const isDisabled = total === 0;
+            searchUpBtn.classList.toggle('disabled', isDisabled);
+            searchDownBtn.classList.toggle('disabled', isDisabled);
+
+            if (isDisabled) {
+                currentHighlightIndex = -1;
+                searchCounter.textContent = '0/0';
+            } else {
+                navigateToHighlight(0);
+            }
+        };
+        
+        // Navigates to a specific highlighted element
+        const navigateToHighlight = (index) => {
+            if (highlightedElements.length === 0) return;
+            
+            document.querySelector('.current-highlight')?.classList.remove('current-highlight');
+            currentHighlightIndex = (index + highlightedElements.length) % highlightedElements.length;
+            
+            const currentEl = highlightedElements[currentHighlightIndex];
+            currentEl.classList.add('current-highlight');
+            currentEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            searchCounter.textContent = `${currentHighlightIndex + 1}/${highlightedElements.length}`;
+        };
+
+        // Toggles the search mode UI
+        const setSearchMode = (isSearching) => {
+            if (isSearching === floatingNav.classList.contains('is-searching')) return;
+
+            if (isSearching) {
+                floatingNav.classList.add('is-searching');
+                closeSearchBtn.style.display = 'flex';
+                scrollToTopBtn.classList.add('search-active');
+                document.body.style.paddingBottom = '64px'; // Adjust for nav bar height
+                searchInput.focus();
+                searchCounter.classList.add('hidden');
+            } else {
+                clearHighlights();
+                searchInput.value = '';
+                searchCounter.classList.add('hidden');
+                floatingNav.classList.remove('is-searching');
+                closeSearchBtn.style.display = 'none';
+                scrollToTopBtn.classList.remove('search-active');
+                document.body.style.paddingBottom = ''; // Reset padding
+                searchInput.blur();
+                justClosedSearch = true;
+                setTimeout(() => { justClosedSearch = false; }, 350);
+                
+                // Manually trigger the scroll handler with a short delay
+                setTimeout(handleScroll, 50);
+            }
+        };
+
+        searchUpBtn.addEventListener('click', () => navigateToHighlight(currentHighlightIndex - 1));
+        searchDownBtn.addEventListener('click', () => navigateToHighlight(currentHighlightIndex + 1));
+        
+        // Perform search on input with a debounce
+        searchInput.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            const query = searchInput.value;
+            searchCounter.classList.toggle('hidden', !query);
+            searchTimeout = setTimeout(() => {
+                highlightText(query);
+            }, 300);
+        });
+
+        // Blur input on Enter key to hide keyboard on mobile
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                searchInput.blur();
+            }
+        });
+
+        bottomSearchBtn.addEventListener('click', () => setSearchMode(true));
+        closeSearchBtn.addEventListener('click', () => setSearchMode(false));
+
+        // Adjust for the virtual keyboard on mobile devices
+        if ('visualViewport' in window) {
+            const viewport = window.visualViewport;
+            const handleViewportChange = () => {
+                if (!floatingNav.classList.contains('is-searching')) return;
+                const bottomOffset = window.innerHeight - viewport.height - viewport.offsetTop;
+                document.documentElement.style.setProperty('--keyboard-offset', `${Math.max(0, bottomOffset)}px`);
+            };
+            viewport.addEventListener('resize', handleViewportChange);
+            viewport.addEventListener('scroll', handleViewportChange);
+        }
+    }
+
+    // Manages the image modal for viewing images
+    function setupImageModal(elements) {
+        const { imageModal, modalImg, modalCloseBtn, scrollToTopBtn } = elements;
+        if (!imageModal || !modalImg || !modalCloseBtn) return;
+
+        // State variables for image interaction (pan, zoom, swipe)
+        let scale = 1, panning = false, pointX = 0, pointY = 0, start = { x: 0, y: 0 };
+        let initialDistance = 0, initialScale = 1;
+        let swipeStartX = 0, swipeStartY = 0;
+        let tapTimer = null;
+        let currentGesture = null;
+
+        // Applies the transform to the modal image
+        const setTransform = (withTransition = false) => {
+            const transitionStyle = withTransition ? 'transform 0.2s ease-out' : (panning ? 'none' : 'transform 0.1s ease-out');
+            modalImg.style.transition = `${transitionStyle}, opacity 0.2s ease-out`;
+            modalImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+        };
+
+        // Calculates the distance between two touch points for pinch-zoom
+        const getDistance = (touches) => Math.hypot(touches[0].pageX - touches[1].pageX, touches[0].pageY - touches[1].pageY);
+
+        // Resets the image to its initial state
+        const resetImageState = (withTransition = false) => {
+            scale = 1;
+            pointX = 0;
+            pointY = 0;
+            initialScale = 1;
+            currentGesture = null;
+            setTransform(withTransition);
+            imageModal.style.backgroundColor = 'rgba(0,0,0,0.9)';
+        };
+
+        // Opens the modal with the specified image source
+        const openModal = (src) => {
+            modalImg.src = src;
+            imageModal.style.display = 'flex';
+            document.body.classList.add('no-scroll');
+            if (scrollToTopBtn) scrollToTopBtn.classList.add('hidden-by-modal');
+            
+            imageModal.style.backgroundColor = 'rgba(0,0,0,0.9)';
+            modalImg.style.opacity = '1';
+            modalCloseBtn.style.opacity = '1';
+            
+            modalImg.onload = () => {
+                 resetImageState();
+                 modalImg.onload = null;
+            };
+            if (modalImg.complete) {
+                resetImageState();
+            }
+        };
+
+        // Closes the modal
+        const closeModal = () => {
+            imageModal.style.backgroundColor = 'rgba(0,0,0,0)';
+            modalImg.style.opacity = '0';
+            modalCloseBtn.style.opacity = '0';
+            setTimeout(() => {
+                imageModal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+                if (scrollToTopBtn) scrollToTopBtn.classList.remove('hidden-by-modal');
+                resetImageState();
+            }, 200);
+        };
+        
+        // Handles double-tap to zoom in/out
+        const handleDoubleTap = () => {
+            if (scale > 1) {
+                resetImageState(true);
+            } else {
+                const imgRect = modalImg.getBoundingClientRect();
+                const modalRect = imageModal.getBoundingClientRect();
+                const targetScale = modalRect.height / imgRect.height;
+                scale = targetScale;
+                pointX = 0;
+                pointY = 0;
+                setTransform(true);
+            }
+        };
+
+        // Add click listeners to all image blocks to open the modal
+        document.querySelectorAll('.image-block').forEach(block => {
+            const src = block.getAttribute('data-src');
+            if (src) {
+                block.addEventListener('click', () => openModal(src));
+            }
+        });
+
+        // Touch event listeners for mobile gestures
+        imageModal.addEventListener('touchstart', (e) => {
+            if (e.target === modalCloseBtn) return;
+
+            // Double-tap detection
+            if (e.touches.length === 1) {
+                if (!tapTimer) {
+                    tapTimer = setTimeout(() => { tapTimer = null; }, 300);
+                } else {
+                    clearTimeout(tapTimer);
+                    tapTimer = null;
+                    e.preventDefault();
+                    handleDoubleTap();
+                    return;
+                }
+            } else {
+                if (tapTimer) clearTimeout(tapTimer);
+                tapTimer = null;
+            }
+
+            // Gesture detection
+            if (e.touches.length === 2) {
+                currentGesture = 'pinch';
+                panning = false;
+                initialDistance = getDistance(e.touches);
+                initialScale = scale;
+            } else if (e.touches.length === 1) {
+                if (scale > 1) {
+                    currentGesture = 'pan';
+                    panning = true;
+                    modalImg.classList.add('dragging');
+                    start = { x: e.touches[0].pageX - pointX, y: e.touches[0].pageY - pointY };
+                } else {
+                    currentGesture = 'swipe';
+                    swipeStartX = e.touches[0].pageX;
+                    swipeStartY = e.touches[0].pageY;
+                }
+            }
+        }, { passive: false });
+
+        imageModal.addEventListener('touchmove', (e) => {
+            if (e.target === modalCloseBtn) return;
+            e.preventDefault();
+
+            if (currentGesture === 'pan' && e.touches.length === 1) {
+                pointX = e.touches[0].pageX - start.x;
+                pointY = e.touches[0].pageY - start.y;
+                setTransform();
+            } else if (currentGesture === 'pinch' && e.touches.length === 2) {
+                const newScale = initialScale * (getDistance(e.touches) / initialDistance);
+                scale = newScale;
+                setTransform();
+            } else if (currentGesture === 'swipe' && e.touches.length === 1) {
+                const deltaX = e.touches[0].pageX - swipeStartX;
+                const deltaY = e.touches[0].pageY - swipeStartY;
+                pointX = deltaX;
+                pointY = deltaY;
+                const swipeDistance = Math.hypot(deltaX, deltaY);
+                const opacity = Math.max(0, 0.9 - swipeDistance / 200);
+                imageModal.style.backgroundColor = `rgba(0,0,0,${opacity})`;
+                setTransform();
+            }
+        }, { passive: false });
+
+        imageModal.addEventListener('touchend', (e) => {
+            panning = false;
+            modalImg.classList.remove('dragging');
+
+            if (currentGesture === 'swipe') {
+                const touch = e.changedTouches[0];
+                const deltaX = touch.pageX - swipeStartX;
+                const deltaY = touch.pageY - swipeStartY;
+                const swipeThreshold = 80;
+
+                if (Math.hypot(deltaX, deltaY) > swipeThreshold) {
+                    closeModal();
+                } else {
+                    resetImageState(true);
+                }
+            } else if (currentGesture === 'pinch') {
+                 if (scale < 1) {
+                    resetImageState(true);
+                 }
+            }
+            
+            if (e.touches.length < 2) {
+                initialScale = scale;
+            }
+            
+            if (e.touches.length === 0) {
+                currentGesture = null;
+            }
+        });
+
+        // Mouse event listeners for desktop interaction
+        modalImg.addEventListener('mousedown', (e) => {
+            if (e.button !== 0 || e.target === modalCloseBtn || scale <= 1) return;
+            e.preventDefault();
+            panning = true;
+            modalImg.classList.add('dragging');
+            start = { x: e.pageX - pointX, y: e.pageY - pointY };
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (panning) {
+                e.preventDefault();
+                pointX = e.pageX - start.x;
+                pointY = e.pageY - start.y;
+                setTransform();
+            }
+        });
+
+        window.addEventListener('mouseup', (e) => {
+            if (e.button !== 0) return;
+            panning = false;
+            modalImg.classList.remove('dragging');
+        });
+
+        modalImg.addEventListener('dblclick', (e) => {
+            e.stopPropagation();
+            handleDoubleTap();
+        });
+
+        // Wheel event for zooming on desktop
+        imageModal.addEventListener('wheel', (e) => {
+            if (e.target === modalCloseBtn) return;
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -0.1 : 0.1;
+            scale = Math.max(1, scale + delta);
+            setTransform();
+        });
+
+        // Event listeners for closing the modal
+        modalCloseBtn.addEventListener('click', (e) => { e.stopPropagation(); closeModal(); });
+        modalCloseBtn.addEventListener('touchstart', (e) => { e.stopPropagation(); e.preventDefault(); closeModal(); });
+        imageModal.addEventListener('click', (e) => { if (e.target === imageModal) closeModal(); });
+    }
+
+    // Manages scroll-related behaviors like showing/hiding nav and FAB
+    function setupScrollBehavior(elements) {
+        const { scrollToTopBtn } = elements;
+        
+        if (scrollToTopBtn) {
+            scrollToTopBtn.addEventListener("click", () => {
+                if (!scrollToTopBtn.classList.contains('hidden-by-modal')) {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+            });
+        }
+        
+        // Use requestAnimationFrame for performance-optimized scroll handling
+        window.addEventListener('scroll', () => {
+            if (!scrollTicking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
+            }
+        }, { passive: true });
+        
+        window.addEventListener('resize', checkFabCollision);
+        setTimeout(checkFabCollision, 100); // Initial check
+    }
+});
+</script>
+</body>
+</html>
